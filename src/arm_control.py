@@ -35,10 +35,10 @@ class arm_control():
         self.auxgreen = [-0.1000,  0.5, 0.800];
 
         destinations = [
-            ['bBottle1' ,'blue' , 'bottle' ,'blue', -0.1700, -0.4600, 0.6135],
-            # ['rCan2'    ,'red'  , 'can'    ,'blue', -0.0774, -0.6800, 0.6901],
-            # ['gCan3'    ,'green', 'can'    ,'blue', -0.0771, -0.6800, 0.5734],
-            ['gCan1'    ,'green', 'can'    ,'blue', -0.1067,  0.3634, 0.6900],
+          # ['bBottle1' ,'blue' , 'bottle' ,'blue', -0.170222, -0.460238, 0.613539],
+           # ['rCan2'    ,'red'  , 'can'    ,'blue', -0.083517, -0.67, 0.689948],
+           # ['gCan3'    ,'green', 'can'    ,'blue', -0.081606, -0.67, 0.573408],
+            ['gCan1'    ,'green', 'can'    ,'blue', -0.107068,  0.362763, 0.681918],
             # ['rCan1'    ,'red'  , 'can'    ,'blue',  0.2950,  0.5031, 0.5857],
         ]
 
