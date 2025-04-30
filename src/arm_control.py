@@ -35,11 +35,12 @@ class arm_control():
         self.auxgreen = [-0.1000,  0.5, 0.800];
 
         destinations = [
-          # ['bBottle1' ,'blue' , 'bottle' ,'blue', -0.170222, -0.460238, 0.613539],
-           # ['rCan2'    ,'red'  , 'can'    ,'blue', -0.083517, -0.67, 0.689948],
-           # ['gCan3'    ,'green', 'can'    ,'blue', -0.081606, -0.67, 0.573408],
-            ['gCan1'    ,'green', 'can'    ,'blue', -0.107068,  0.362763, 0.681918],
-            # ['rCan1'    ,'red'  , 'can'    ,'blue',  0.2950,  0.5031, 0.5857],
+        ['bBottle1' ,'blue' , 'bottle' ,'blue', -0.170222, -0.460238, 0.613539],
+        ['rCan2'    ,'red'  , 'can'    ,'blue', -0.083517, -0.67, 0.689948],
+        ['gCan3'    ,'green', 'can'    ,'blue', -0.081606, -0.67, 0.573408],
+        ['gCan1'    ,'green', 'can'    ,'green', -0.107068,  0.3709, 0.681918],
+        ['bBottle2' ,'blue' , 'bottle' ,'green', 0.073349, 0.230002, 0.613600],
+        ['rCan1'    ,'red'  , 'can'    ,'green',  0.295310,  0.51, 0.573127],
         ]
 
         rospy.loginfo(f'Going to home.')
@@ -139,8 +140,8 @@ class arm_control():
     def gripper_close(self):
         goal = GraspGoal()
         goal.width = 0.04
-        goal.speed = 0.01
         goal.force = 20
+        goal.speed = 0.01
         goal.epsilon.inner = 0.05
         goal.epsilon.outer = 0.05
         self.action_client_close.send_goal(goal)
