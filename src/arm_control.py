@@ -41,6 +41,7 @@ class arm_control():
         # ['gCan1'    ,'green', 'can'    ,'green', -0.107068,  0.3709, 0.681918],
         # ['bBottle2' ,'blue' , 'bottle' ,'green', 0.073349, 0.230002, 0.613600],
         # ['rCan1'    ,'red'  , 'can'    ,'green',  0.295523,  0.502168, 0.572917],  
+        
 
         # ['yBottle3' ,'yellow' , 'bottle' ,'green', 0.317339, 0.125733, 0.613952],
         ['gCan2','green', 'can_sleep'    ,'blue', 0.221644,  -0.021954, 0.547808],
