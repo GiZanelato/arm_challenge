@@ -35,12 +35,16 @@ class arm_control():
         self.auxgreen = [-0.1000,  0.5, 0.800];
 
         destinations = [
-        ['bBottle1' ,'blue' , 'bottle' ,'blue', -0.170222, -0.460238, 0.613539],
-        ['rCan2'    ,'red'  , 'can'    ,'blue', -0.083517, -0.67, 0.689948],
-        ['gCan3'    ,'green', 'can'    ,'blue', -0.081606, -0.67, 0.573408],
-        ['gCan1'    ,'green', 'can'    ,'green', -0.107068,  0.3709, 0.681918],
-        ['bBottle2' ,'blue' , 'bottle' ,'green', 0.073349, 0.230002, 0.613600],
-        ['rCan1'    ,'red'  , 'can'    ,'green',  0.295310,  0.51, 0.573127],
+        # ['bBottle1' ,'blue' , 'bottle' ,'blue', -0.170222, -0.460238, 0.613539],
+        # ['rCan2'    ,'red'  , 'can'    ,'blue', -0.083517, -0.67, 0.689948],
+        # ['gCan3'    ,'green', 'can'    ,'blue', -0.081606, -0.67, 0.573408],
+        # ['gCan1'    ,'green', 'can'    ,'green', -0.107068,  0.3709, 0.681918],
+        # ['bBottle2' ,'blue' , 'bottle' ,'green', 0.073349, 0.230002, 0.613600],
+        # ['rCan1'    ,'red'  , 'can'    ,'green',  0.295523,  0.502168, 0.572917],  
+
+        # ['yBottle3' ,'yellow' , 'bottle' ,'green', 0.317339, 0.125733, 0.613952],
+        ['gCan2','green', 'can_sleep'    ,'blue', 0.221644,  -0.021954, 0.547808],
+        # ['rBottle1' ,'red' , 'bottle_sleep' ,'green', 0.300017, 0.618887,0.548696],  
         ]
 
         rospy.loginfo(f'Going to home.')
@@ -49,17 +53,21 @@ class arm_control():
 
         for d in destinations:
 
-            shift1 = 0.15 # em cima do objeto
+            shift1 = 0.40 # em cima do objeto
 
             if(d[2]=='bottle'):
                 shift2 = 0.06  # no ponto de grasp
-            if(d[2]=='can'):
+            elif(d[2]=='can'):
                 shift2 = 0.02  # no ponto de grasp
+            elif(d[2]=='can_sleep'):
+                shift2 = 0.02  # no ponto de grasp
+            elif(d[2]=='bottle_sleep'):
+                shift2 = 0.01  # no ponto de grasp        
 
 
             rospy.loginfo(f'Going to {d[0]} head.')
             self.goto(d[4],d[5],d[6]+shift1)       
-            self.wait(self.time_to_wait)  
+            self.wait(self.time_to_wait)
 
             rospy.loginfo(f'Open gripper')
             self.gripper_open()     
@@ -120,7 +128,7 @@ class arm_control():
     def goto(self, x, y, z):
         rospy.loginfo(f'goto')
 
-        quaternion = quaternion_from_euler(-pi,0,0)
+        quaternion = quaternion_from_euler(-pi,0,pi/2)
         ps = PoseStamped()
         ps.pose.position.x = x - self.base[0]
         ps.pose.position.y = y - self.base[1]
